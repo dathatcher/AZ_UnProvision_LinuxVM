@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  UnprovisionAZLinuxVM:
+    docker:
+    - image: microsoft/azure-cli:latest
+    steps:
+    - run: |
+        az login --service-principal -u $AZURE_SERVICE_PRINC --password $AZURE_SERVICE_PRINC_PASSWORD --tenant $AZURE_TENANT
+workflows:
+  version: 2
+  build_Infra:
+    jobs:
+    - UnprovisionAZLinuxVM
