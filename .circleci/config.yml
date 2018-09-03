@@ -6,6 +6,7 @@ jobs:
     steps:
     - run: |
         az login --service-principal -u $AZURE_SERVICE_PRINC --password $AZURE_SERVICE_PRINC_PASSWORD --tenant $AZURE_TENANT
+        az vm delete -g $AZ_RESOURCE_GRP -n $AZ_LINUX_VM_NAME --yes
 workflows:
   version: 2
   build_Infra:
